@@ -25,8 +25,7 @@ class Aluno extends CI_Controller {
 
             $this->load->view('system_view', $dados);
         } else {
-
-            $this->load->view("acesso_negado");
+            $this->load->view("system_view", array('titulo'=>'Acesso Negado!', 'tela'=>'acesso_negado'));
         }
     }
 
@@ -83,7 +82,7 @@ class Aluno extends CI_Controller {
             $this->load->view('system_view', $dados);
         } else {
 
-            $this->load->view("acesso_negado");
+            $this->load->view("system_view", array('titulo'=>'Acesso Negado!', 'tela'=>'acesso_negado'));
         }
     }
 

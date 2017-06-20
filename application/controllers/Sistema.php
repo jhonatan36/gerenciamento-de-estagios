@@ -23,14 +23,11 @@ class Sistema extends CI_Controller {
             $this->load->view('system_view', $dados);
         } else {
 
-            $this->load->view("acesso_negado");
+            $this->load->view("system_view", array('titulo'=>'Acesso Negado!', 'tela'=>'acesso_negado'));
         }
     }
 
     public function logar() {
-        $permissao = $this->auth->check_logged($this->router->class, $this->router->method);
-
-        if ($permissao) {
 
             if ($this->input->post('matricula') != NULL) {
 
@@ -73,10 +70,6 @@ class Sistema extends CI_Controller {
             );
 
             $this->load->view('login', $dados);
-        }else{
-            
-            redirect('sistema');
-        }
     }
 
     public function deslogar() {
