@@ -43,7 +43,6 @@ class Item extends CI_Controller {
                     'status' => $this->input->post('status'),
                     'id_menu' => $this->input->post('menu'),
                     'id_metodo' => $this->input->post('metodo'),
-                    'data_cadastro' => getData('Y-m-d h:i:s')
                 );
 
                 if ($this->item->cadastrar($cadastro)) {
@@ -59,8 +58,8 @@ class Item extends CI_Controller {
                 'titulo' => 'Cadastrar novo Item',
                 'tela' => 'item_create_edit',
                 'funcao' => 'cadastrar',
-                'metodos' => $this->metodo->retornar(NULL, NULL, TRUE),
-                'menus' => $this->menu->retorna_menus(NULL, NULL, TRUE),
+                'metodos' => $this->metodo->retornar(NULL, 'nome ASC, metodo DESC', TRUE),
+                'menus' => $this->menu->retorna_menus(NULL, 'nome ASC', TRUE),
             );
 
             $this->load->view('system_view', $dados);
@@ -90,8 +89,7 @@ class Item extends CI_Controller {
                     'nome' => $this->input->post('nome'),
                     'status' => $this->input->post('status'),
                     'id_menu' => $this->input->post('menu'),
-                    'id_metodo' => $this->input->post('metodo'),
-                    'data_modificacao' => getData('Y-m-d h:i:s')
+                    'id_metodo' => $this->input->post('metodo')
                 );
 
                 if ($this->item->editar(array('id' => $id), $cadastro)) {

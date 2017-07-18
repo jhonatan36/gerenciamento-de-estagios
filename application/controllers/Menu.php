@@ -37,8 +37,7 @@ class Menu extends CI_Controller {
 
                 $cadastro = array(
                     'nome' => $this->input->post('nome'),
-                    'status' => $this->input->post('status'),
-                    'data_cadastro' => getData('Y/m/d h:i:s')
+                    'status' => $this->input->post('status')
                 );
 
                 if ($this->menu->cadastrar($cadastro)) {
@@ -83,8 +82,7 @@ class Menu extends CI_Controller {
 
                 $cadastro = array(
                     'nome' => $this->input->post('nome'),
-                    'status' => $this->input->post('status'),
-                    'data_modificacao' => getData('Y/m/d h:i:s')
+                    'status' => $this->input->post('status')
                 );
 
                 if ($this->menu->editar($condicao, $cadastro)) {

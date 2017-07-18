@@ -38,8 +38,7 @@ class Perfil extends CI_Controller {
 
                 $cadastro = array(
                     'nome' => $this->input->post('nome'),
-                    'status' => $this->input->post('status'),
-                    'data_cadastro' => getData('Y/m/d h:i:s')
+                    'status' => $this->input->post('status')
                 );
 
                 if ($this->perfil->cadastrar($cadastro)) {
@@ -75,8 +74,7 @@ class Perfil extends CI_Controller {
                 if ($id != NULL) {
                     $cadastro = array(
                         'nome' => $this->input->post('nome'),
-                        'status' => $this->input->post('status'),
-                        'data_modificacao' => getData('Y/m/d h:i:s')
+                        'status' => $this->input->post('status')
                     );
 
                     if ($this->perfil->editar(array('id' => $id), $cadastro)) {

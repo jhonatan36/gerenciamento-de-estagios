@@ -81,6 +81,7 @@
                 </div>
                 <div class="box-body">
                     <a href="<?php echo base_url('menu/cadastrar'); ?>" class="btn btn-info"><i class="fa fa-plus-square"></i> Novo</a>
+                    <a href="<?php echo base_url('item/index'); ?>" class="btn btn-success"><i class="fa fa-plus-square"></i> Itens</a>
                 </div>
             </div>
         </div>

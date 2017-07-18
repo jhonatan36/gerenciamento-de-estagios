@@ -86,6 +86,7 @@
                     <h3 class="box-title">Ferramentas</h3>
                 </div>
                 <div class="box-body">
+                    <a href="<?php echo base_url('menu/index'); ?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Voltar</a>
                     <a href="<?php echo base_url('item/cadastrar'); ?>" class="btn btn-info"><i class="fa fa-plus-square"></i> Novo</a>
                 </div>
             </div>

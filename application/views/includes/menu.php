@@ -72,24 +72,20 @@
             foreach ($menus as $val) {
                 ?>
 
-                <li class="<?php
-                if ($this->uri->segment(1) == 'usuario') {
-                    echo 'active';
-                } else if ($this->uri->segment(1) == 'aluno') {
-                    echo 'active';
-                }
-                ?> 
-                    treeview">
-                    <a href="#">
-                        <i class="fa fa-users"></i> <span><?= $val->nome; ?></span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
+                <li class="treeview">
                     <?php
                     $itens = $this->item->retorna_itens_menu($perfil, $val->id, 'nome ASC');
 
                     if ($itens->num_rows() > 0) {
+
+                        ?>
+                            <a href="#">
+                                <i class="fa fa-users"></i> <span><?= $val->nome; ?></span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                        <?php
 
                         $itens = $itens->result();
                         ?>

@@ -56,8 +56,7 @@ class Permissao extends CI_Controller {
                 } else {
                     $dados = array(
                         'id_perfil' => $this->input->post('perfil'),
-                        'id_metodo' => $this->input->post('metodo'),
-                        'data_cadastro' => getData('Y/m/d H:i:s')
+                        'id_metodo' => $this->input->post('metodo')
                     );
                     if ($this->permissao->adiciona_permissao($dados)) {
                         echo 'Permissão concedida!';
