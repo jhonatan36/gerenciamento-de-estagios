@@ -9,6 +9,7 @@ class Usuario extends CI_Controller {
         /* declarações globais */
         $this->load->model('sistema_model', 'sistema');
         $this->load->model('usuario_model', 'usuario');
+        $this->load->model('perfil_model', 'perfil');
         date_default_timezone_set('America/Sao_Paulo');
     }
 
@@ -20,7 +21,7 @@ class Usuario extends CI_Controller {
             $dados = array(
                 'tela' => 'usuario_retrieve',
                 'titulo' => 'Usuários Cadastrados',
-                'usuarios' => $this->usuario->retorna_usuario(array('perfil !=' => '1'), NULL, TRUE)
+                'usuarios' => $this->usuario->retorna_usuario(NULL, NULL, TRUE)
             );
 
             $this->load->view('system_view', $dados);
@@ -55,10 +56,10 @@ class Usuario extends CI_Controller {
                 $resposta = $this->usuario->cadastrar($cadastro);
 
                 if ($resposta) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Usuário Cadastrado com sucesso!'));
+                    set_msg('msg', 'Usuário cadastrado com sucesso!', 'sucesso');
                     redirect('usuario/cadastrar');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível realizar o cadastro!'));
+                    set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
                     redirect('usuario/cadastrar');
                 }
             }
@@ -67,7 +68,8 @@ class Usuario extends CI_Controller {
             $dados = array(
                 'tela' => 'usuario_create_edit',
                 'titulo' => 'Cadastrar Usuário',
-                'funcao' => 'cadastrar'
+                'funcao' => 'cadastrar',
+                'perfis' => $this->perfil->retorna_perfis(NULL, 'nome ASC', TRUE)
             );
 
             $this->load->view('system_view', $dados);
@@ -113,11 +115,11 @@ class Usuario extends CI_Controller {
                 }
 
                 if ($resposta) {
-                    $this->session->set_flashdata('mensagem', 'Usuário Cadastrado com sucesso!');
+                    set_msg('msg', 'Usuário editado com sucesso!', 'sucesso');
                     redirect('usuario');
                 } else {
-                    $this->session->set_flashdata('mensagem', 'Não foi possível realizar o cadastro!');
-                    redirect('usuario/editar');
+                    set_msg('msg', 'Erro ao editar o cadastro!', 'erro');
+                    redirect("usuario/editar/$idUsuario");
                 }
             }
 
@@ -134,6 +136,7 @@ class Usuario extends CI_Controller {
                     $dados['dados_aluno'] = $dados_aluno;
                 }
             } else {
+                set_msg('msg', 'Erro ao recuperar o id ou o cadastro!', 'erro');
                 redirect('usuario');
             }
 

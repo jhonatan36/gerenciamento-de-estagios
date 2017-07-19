@@ -17,6 +17,9 @@
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-md-12">
+            <?php if (get_msg('msg') != NULL) {
+                echo get_msg('msg');
+            } ?>
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title"><?php echo $titulo; ?></h3>

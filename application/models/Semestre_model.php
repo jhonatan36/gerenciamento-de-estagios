@@ -13,9 +13,9 @@ class Semestre_model extends CI_Model {
         }
         
         if($result){
-            return $this->db->get('semestre_letivo')->result();
+            return $this->db->get('tbl_semestre_letivo')->result();
         }else{
-            return $this->db->get('semestre_letivo');
+            return $this->db->get('tbl_semestre_letivo');
         }
     }
     
@@ -35,7 +35,7 @@ class Semestre_model extends CI_Model {
     public function editar($condicao = NULL, $dados = NULL){
         if(($dados != NULL) && ($condicao!=NULL)){
             $this->db->where($condicao);
-            if($this->db->update('semestre_letivo', $dados)){
+            if($this->db->update('tbl_semestre_letivo', $dados)){
                 return TRUE;
             }else{
                 return FALSE;
@@ -48,7 +48,7 @@ class Semestre_model extends CI_Model {
     public function deletar($condicao = NULL){
         if($condicao!=NULL){
             
-            if($this->db->delete('semestre_letivo', $condicao)){
+            if($this->db->delete('tbl_semestre_letivo', $condicao)){
                 return TRUE;
             }else{
                 return FALSE;

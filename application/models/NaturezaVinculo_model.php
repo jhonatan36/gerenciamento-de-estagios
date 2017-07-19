@@ -15,9 +15,9 @@ class NaturezaVinculo_model extends CI_Model {
         }
         
         if($result){
-            return $this->db->get('natureza_vinculo')->result();
+            return $this->db->get('tbl_natureza_vinculo')->result();
         }else{
-            return $this->db->get('natureza_vinculo');
+            return $this->db->get('tbl_natureza_vinculo');
         }
     }
 
@@ -25,7 +25,7 @@ class NaturezaVinculo_model extends CI_Model {
 
         if ($dados != NULL) {
 
-            if ($this->db->insert('natureza_vinculo', $dados)) {
+            if ($this->db->insert('tbl_natureza_vinculo', $dados)) {
                 return TRUE;
             } else {
                 return FALSE;
@@ -39,7 +39,7 @@ class NaturezaVinculo_model extends CI_Model {
 
         if (($condicao != NULL) && ($dados != NULL)) {
 
-            if ($this->db->update('natureza_vinculo', $dados, $condicao)) {
+            if ($this->db->update('tbl_natureza_vinculo', $dados, $condicao)) {
                 return TRUE;
             } else {
                 return FALSE;
@@ -54,7 +54,7 @@ class NaturezaVinculo_model extends CI_Model {
         
         if($condicao!=NULL){
             
-            if($this->db->delete('natureza_vinculo', $condicao)){
+            if($this->db->delete('tbl_natureza_vinculo', $condicao)){
                 return TRUE;
             }else{
                 return FALSE;
@@ -68,7 +68,7 @@ class NaturezaVinculo_model extends CI_Model {
         
         if($dados!=NULL){
             
-            if($this->db->insert('arquivos_necessarios', $dados)){
+            if($this->db->insert('tbl_arquivos_necessarios', $dados)){
                 return TRUE;
             }else{
                 return FALSE;
@@ -82,7 +82,7 @@ class NaturezaVinculo_model extends CI_Model {
         
         if($condicao!=NULL){
             
-            if($this->db->delete('arquivos_necessarios', $condicao)){
+            if($this->db->delete('tbl_arquivos_necessarios', $condicao)){
                 return TRUE;
             }else{
                 return FALSE;
@@ -99,9 +99,9 @@ class NaturezaVinculo_model extends CI_Model {
         }
         
         if($result){
-            return $this->db->get('arquivos_necessarios')->result();
+            return $this->db->get('tbl_arquivos_necessarios')->result();
         }else{
-            return $this->db->get('arquivos_necessarios');
+            return $this->db->get('tbl_arquivos_necessarios');
         }
     }
     

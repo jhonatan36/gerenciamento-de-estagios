@@ -15,9 +15,9 @@ class TipoArquivo_model extends CI_Model {
         }
 
         if ($result) {
-            return $this->db->get('tipo_arquivo')->result();
+            return $this->db->get('tbl_tipo_arquivo')->result();
         } else {
-            return $this->db->get('tipo_arquivo');
+            return $this->db->get('tbl_tipo_arquivo');
         }
     }
 
@@ -25,7 +25,7 @@ class TipoArquivo_model extends CI_Model {
 
         if ($dados != NULL) {
 
-            if ($this->db->insert('tipo_arquivo', $dados)) {
+            if ($this->db->insert('tbl_tipo_arquivo', $dados)) {
                 return TRUE;
             } else {
                 return FALSE;
@@ -39,7 +39,7 @@ class TipoArquivo_model extends CI_Model {
 
         if (($condicao != NULL) && ($dados != NULL)) {
 
-            if ($this->db->update('tipo_arquivo', $dados, $condicao)) {
+            if ($this->db->update('tbl_tipo_arquivo', $dados, $condicao)) {
                 return TRUE;
             } else {
                 return FALSE;
@@ -54,7 +54,7 @@ class TipoArquivo_model extends CI_Model {
         
         if($condicao!=NULL){
             
-            if($this->db->delete('tipo_arquivo', $condicao)){
+            if($this->db->delete('tbl_tipo_arquivo', $condicao)){
                 return TRUE;
             }else{
                 return FALSE;

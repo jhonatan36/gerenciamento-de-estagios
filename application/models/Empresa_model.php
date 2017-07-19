@@ -16,10 +16,10 @@ class Empresa_model extends CI_Model {
         
         if($result){
             
-            return $this->db->get('empresa')->result();
+            return $this->db->get('tbl_empresa')->result();
         }
         
-        return $this->db->get('empresa');
+        return $this->db->get('tbl_empresa');
     }
     
     public function cadastrar($dados = NULL){
@@ -40,7 +40,7 @@ class Empresa_model extends CI_Model {
         
         if($condicao != NULL && $dados != NULL){
             
-            if($this->db->where($condicao)->update('empresa', $dados)){
+            if($this->db->where($condicao)->update('tbl_empresa', $dados)){
                 return TRUE;
             }else{
                 return FALSE;
@@ -53,7 +53,7 @@ class Empresa_model extends CI_Model {
     public function excluir($condicao = NULL){
         
         if($condicao != NULL){
-            if($this->db->delete('empresa', $condicao)){
+            if($this->db->delete('tbl_empresa', $condicao)){
                 return TRUE;
             }else{
                 return FALSE;

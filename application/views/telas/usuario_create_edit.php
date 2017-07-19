@@ -18,27 +18,15 @@
                         <label>Tipo de Usuário</label>
                         <select id="tipo_usuario" name="tipo_usuario" class="form-control">
                             <option value="">Escolha uma opção.</option>
-                            <option value="2" <?php
-                            if (isset($usuario)) {
-                                if ($usuario != NULL && $usuario->tipo_usuario == 2) {
-                                    echo 'selected';
+                            <?php foreach ($perfis as $key => $value) { ?>
+                                <option value="<?=$value->id;?>" <?php
+                                if (isset($usuario)) {
+                                    if ($usuario != NULL && $usuario->perfil == $value->id) {
+                                        echo 'selected';
+                                    }
                                 }
-                            }
-                            ?>>Coordenador</option>
-                            <option value="3" <?php
-                            if (isset($usuario)) {
-                                if ($usuario != NULL && $usuario->tipo_usuario == 3) {
-                                    echo 'selected';
-                                }
-                            }
-                            ?>>Orientador</option>
-                            <option value="4" <?php
-                            if (isset($usuario)) {
-                                if ($usuario != NULL && $usuario->tipo_usuario == 4) {
-                                    echo 'selected';
-                                }
-                            }
-                            ?>>Supervisor</option>
+                                ?>><?=$value->nome;?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group has-feedback">

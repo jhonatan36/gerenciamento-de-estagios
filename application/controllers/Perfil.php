@@ -42,9 +42,11 @@ class Perfil extends CI_Controller {
                 );
 
                 if ($this->perfil->cadastrar($cadastro)) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Perfil Cadastrado com sucesso!'));
-                    redirect('perfil/cadastrar');
+                    set_msg('msg', 'Perfil cadastrado com sucesso!', 'sucesso');
+                    redirect('perfil');
                 } else {
+                    set_msg('msg', 'Erro ao cadastrar!', 'sucesso');
+                    redirect('perfil');
                     $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao cadastrar!'));
                     redirect('perfil/cadastrar');
                 }
@@ -78,14 +80,14 @@ class Perfil extends CI_Controller {
                     );
 
                     if ($this->perfil->editar(array('id' => $id), $cadastro)) {
-                        $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Perfil editado com sucesso!'));
+                        set_msg('msg', 'Perfil editado com sucesso!', 'sucesso');
                         redirect('perfil');
                     } else {
-                        $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao editar!'));
+                        set_msg('msg', 'Erro ao editar!', 'erro');
                         redirect('perfil');
                     }
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao identificar o id!'));
+                    set_msg('msg', 'Erro ao identificar o id!', 'erro');
                     redirect('perfil');
                 }
             }
@@ -101,6 +103,30 @@ class Perfil extends CI_Controller {
 
             $this->load->view("system_view", array('titulo'=>'Acesso Negado!', 'tela'=>'acesso_negado'));
         }
+    }
+
+    public function excluir(){
+        
+        $permissao = $this->auth->check_logged($this->router->class, $this->router->method);
+
+        if ($permissao) {
+
+            $id = $this->uri->segment(3);
+            if($id!=NULL){
+                if($this->perfil->excluir(array('id'=>$id))){
+                    set_msg('msg', 'Perfil excluído com sucesso!', 'sucesso');
+                    redirect('perfil');
+                }else{
+                    set_msg('msg', 'Não foi possível excluir o Perfil!', 'erro');
+                    redirect('perfil');
+                }
+            }
+
+        } else {
+
+            $this->load->view("system_view", array('titulo'=>'Acesso Negado!', 'tela'=>'acesso_negado'));
+        }
+
     }
 
 }

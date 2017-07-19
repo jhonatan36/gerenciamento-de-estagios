@@ -38,10 +38,10 @@ class Metodo extends CI_Controller {
             if ($id != NULL) {
 
                 if ($this->metodo->excluir(array('id' => $id))) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Método deletado com sucesso!'));
+                    set_msg('msg', 'Metódo excluído com sucesso!', 'sucesso');
                     redirect('metodo');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível excluir!'));
+                    set_msg('msg', 'Erro ao excluir o cadastro!', 'erro');
                     redirect('metodo');
                 }
             }

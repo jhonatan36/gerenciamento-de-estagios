@@ -16,7 +16,7 @@ class Sistema_model extends CI_Model {
         
         public function logar($dados = NULL){
             if($dados!=NULL){
-                $usuario = $this->db->where($dados)->get('usuario');
+                $usuario = $this->db->where($dados)->get('tbl_usuario');
                 
                 if($usuario != NULL){
                     $usuario=$usuario->row();

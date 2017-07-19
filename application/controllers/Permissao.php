@@ -50,8 +50,9 @@ class Permissao extends CI_Controller {
                     if ($this->permissao->remove_permissao($condicao)) {
                         echo 'Permissão removida!';
                     } else {
-                        $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao remover permissão!'));
-                        redirect('permissao');
+                        echo 'Erro ao inserir permissão. Provavelmente você não tem privilegios suficientes.';
+                        //set_msg('msg', 'Erro!', 'erro');
+                        //redirect('permissao');
                     }
                 } else {
                     $dados = array(
@@ -61,8 +62,9 @@ class Permissao extends CI_Controller {
                     if ($this->permissao->adiciona_permissao($dados)) {
                         echo 'Permissão concedida!';
                     } else {
-                        $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao adicionar permissão!'));
-                        redirect('permissao');
+                        echo 'Erro ao remover permissão. Provavelmente você não tem privilegios suficientes.';
+                        //set_msg('msg', 'Erro!', 'erro');
+                        //redirect('permissao');
                     }
                 }
             }

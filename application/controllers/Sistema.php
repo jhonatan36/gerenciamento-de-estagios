@@ -29,47 +29,54 @@ class Sistema extends CI_Controller {
 
     public function logar() {
 
-            if ($this->input->post('matricula') != NULL) {
+            if($this->session->userdata('logged_in')!=NULL && $this->session->userdata('logged_in')){
 
-                $logger = array(
-                    'matricula' => $this->input->post('matricula'),
-                    'senha' => md5($this->input->post('senha'))
-                );
+                    redirect('sistema');
 
-                $login = $this->sistema->logar($logger);
-                if ($login != NULL) {
-                    if ($login->status == 1) {
-                        $data_cadastro = implode('-', array_reverse(explode('-', $login->data_cadastro)));
+            }else{
 
-                        $this->session->set_userdata(array(
-                            'id' => $login->idusuario,
-                            'usuario' => $login->matricula,
-                            'apelido' => $login->nome,
-                            'logged_in' => TRUE,
-                            'data_cadastro' => $data_cadastro,
-                            'perfil' => $login->perfil,
-                            'registro' => time(),
-                            'limite' => 900
-                        ));
+                if ($this->input->post('matricula') != NULL) {
 
-                        redirect('sistema');
+                    $logger = array(
+                        'matricula' => $this->input->post('matricula'),
+                        'senha' => md5($this->input->post('senha'))
+                    );
+
+                    $login = $this->sistema->logar($logger);
+                    if ($login != NULL) {
+                        if ($login->status == 1) {
+                            $data_cadastro = implode('-', array_reverse(explode('-', $login->data_cadastro)));
+
+                            $this->session->set_userdata(array(
+                                'id' => $login->idusuario,
+                                'usuario' => $login->matricula,
+                                'apelido' => $login->nome,
+                                'logged_in' => TRUE,
+                                'data_cadastro' => $data_cadastro,
+                                'perfil' => $login->perfil,
+                                'registro' => time(),
+                                'limite' => 900
+                            ));
+
+                            redirect('sistema');
+                        } else {
+                            //mensagem de usuário bloqueado/suspenso
+                            set_msg('msg', 'Usuário suspenso, entre em contato com o Coordenador!', 'erro');
+                            redirect('sistema/logar');
+                        }
                     } else {
-                        //mensagem de usuário bloqueado/suspenso
-                        $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Usuário Suspenso, Contate o coordenador!'));
+                        //mensagem de erro.
+                        set_msg('msg', 'Usuário e/ou senha incorreto(s)!', 'erro');
                         redirect('sistema/logar');
                     }
-                } else {
-                    //mensagem de erro.
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Usuário ou senha incorretos!'));
-                    redirect('sistema/logar');
                 }
+
+                $dados = array(
+                    'titulo' => ''
+                );
+
+                $this->load->view('login', $dados);
             }
-
-            $dados = array(
-                'titulo' => ''
-            );
-
-            $this->load->view('login', $dados);
     }
 
     public function deslogar() {

@@ -41,10 +41,10 @@ class Menu extends CI_Controller {
                 );
 
                 if ($this->menu->cadastrar($cadastro)) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Menu Cadastrado com sucesso!'));
+                    set_msg('msg', 'Menu cadastrado com sucesso!', 'sucesso');
                     redirect('menu/cadastrar');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao cadastrar!'));
+                    set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
                     redirect('menu/cadastrar');
                 }
             }
@@ -72,6 +72,7 @@ class Menu extends CI_Controller {
             if ($id != NULL) {
                 $menu = $this->menu->retorna_menus(array('id' => $id), NULL, FALSE)->row();
             } else {
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
                 redirect('menu');
             }
 
@@ -86,10 +87,10 @@ class Menu extends CI_Controller {
                 );
 
                 if ($this->menu->editar($condicao, $cadastro)) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Menu Editado com sucesso!'));
+                    set_msg('msg', 'Menu editado com sucesso!', 'sucesso');
                     redirect('menu');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao editar!'));
+                    set_msg('msg', 'Erro ao editar o cadastro!', 'erro');
                     redirect('menu');
                 }
             }
@@ -121,12 +122,15 @@ class Menu extends CI_Controller {
             if ($id != NULL) {
 
                 if ($this->menu->excluir(array('id' => $id))) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Menu excluido com sucesso!'));
+                    set_msg('msg', 'Menu excluído com sucesso!', 'sucesso');
                     redirect('menu');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao excluir!'));
+                    set_msg('msg', 'Erro ao excluir o cadastro!', 'erro');
                     redirect('menu');
                 }
+            }else{
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
+                redirect('menu');
             }
         } else {
 

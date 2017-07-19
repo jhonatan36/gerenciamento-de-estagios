@@ -49,12 +49,10 @@ class Semestre extends CI_Controller {
                 );
 
                 if ($this->semestre->cadastrar($cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Semestre cadastrado com sucesso!'));
+                    set_msg('msg', 'Semestre cadastrado com sucesso!', 'sucesso');
                     redirect('semestre/cadastrar');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível realizar o cadastro!'));
+                    set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
                     redirect('semestre/cadastrar');
                 }
             }
@@ -82,6 +80,7 @@ class Semestre extends CI_Controller {
             if ($idsemestre != NULL) {
                 $semestre = $this->semestre->retornar(array('idsemestre_letivo' => $idsemestre), NULL, FALSE)->row();
             } else {
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
                 redirect('semestre');
             }
 
@@ -100,12 +99,10 @@ class Semestre extends CI_Controller {
                 $condicao = array('idsemestre_letivo' => $this->input->post('idsemestre_letivo'));
 
                 if ($this->semestre->editar($condicao, $cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Semestre editado com sucesso!'));
+                    set_msg('msg', 'Semestre editado com sucesso!', 'sucesso');
                     redirect('semestre');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível realizar a edição!'));
+                    set_msg('msg', 'Erro ao editar o cadastro!', 'erro');
                     redirect('semestre');
                 }
             }
@@ -137,6 +134,7 @@ class Semestre extends CI_Controller {
             if ($idsemestre != NULL) {
                 $semestre = $this->semestre->retornar(array('idsemestre_letivo' => $idsemestre), NULL, FALSE)->row();
             } else {
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
                 redirect('semestre');
             }
 
@@ -144,17 +142,14 @@ class Semestre extends CI_Controller {
 
             if ($semestre->ativo == 0) {
                 if ($this->semestre->deletar($condicao)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Semestre apagado com sucesso!'));
+                    set_msg('msg', 'Semestre excluído com sucesso!', 'sucesso');
                     redirect('semestre');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível apagar!'));
+                    set_msg('msg', 'Erro ao excluir o cadastro!', 'erro');
                     redirect('semestre');
                 }
             } else {
-
-                $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Só é possível deletar semestre que não são utilizados e que estejam desativados.'));
+                set_msg('msg', 'Só é possível remover semestres que não estejam sendo utilizados!', 'erro');
                 redirect('semestre');
             }
         } else {

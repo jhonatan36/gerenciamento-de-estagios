@@ -20,7 +20,7 @@ class Aluno extends CI_Controller {
             $dados = array(
                 'tela' => 'aluno_retrieve',
                 'titulo' => 'Alunos Cadastrados',
-                'alunos' => $this->usuario->retorna_aluno(array('perfil' => '2'), NULL, TRUE)
+                'alunos' => $this->usuario->retorna_usuario(array('perfil' => '2'), NULL, TRUE)
             );
 
             $this->load->view('system_view', $dados);

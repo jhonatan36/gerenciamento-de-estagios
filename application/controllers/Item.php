@@ -46,10 +46,10 @@ class Item extends CI_Controller {
                 );
 
                 if ($this->item->cadastrar($cadastro)) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Item Cadastrado com sucesso!'));
+                    set_msg('msg', 'Item cadastrado com sucesso!', 'sucesso');
                     redirect('item/cadastrar');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'não foi possivel cadastrar!'));
+                    set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
                     redirect('item/cadastrar');
                 }
             }
@@ -93,10 +93,10 @@ class Item extends CI_Controller {
                 );
 
                 if ($this->item->editar(array('id' => $id), $cadastro)) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Item editado com sucesso!'));
+                    set_msg('msg', 'Item editado com sucesso!', 'sucesso');
                     redirect('item');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'não foi possivel editar!'));
+                    set_msg('msg', 'Não foi possível editar!', 'erro');
                     redirect('item');
                 }
             }
@@ -129,14 +129,14 @@ class Item extends CI_Controller {
 
             if ($id != NULL) {
                 if ($this->item->excluir(array('id' => $id))) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Item excluído com sucesso!'));
+                    set_msg('msg', 'Item excluído com sucesso!', 'sucesso');
                     redirect('item');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'não foi possivel excluir!'));
+                    set_msg('msg', 'Não foi possível excluir o item!', 'erro');
                     redirect('item');
                 }
             } else {
-                $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'não foi possivel pegar o id!'));
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
                 redirect('item');
             }
         } else {

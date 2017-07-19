@@ -46,12 +46,10 @@ class TipoArquivo extends CI_Controller {
 
 
                 if ($this->tipoArquivo->cadastrar($cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Tipo cadastrado com sucesso!'));
+                    set_msg('msg', 'Tipo cadastrado com sucesso!', 'sucesso');
                     redirect('tipoArquivo/cadastrar');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel cadastrar!'));
+                    set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
                     redirect('tipoArquivo/cadastrar');
                 }
             }
@@ -80,6 +78,7 @@ class TipoArquivo extends CI_Controller {
             if ($id != NULL) {
                 $tipoArquivo = $this->tipoArquivo->retornar_tipoArquivo(array('idtipo_arquivo' => $id), NULL, NULL)->row();
             } else {
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
                 redirect('tipoArquivo');
             }
 
@@ -93,12 +92,10 @@ class TipoArquivo extends CI_Controller {
 
 
                 if ($this->tipoArquivo->editar(array('idtipo_arquivo' => $id), $cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Tipo editado com sucesso!'));
+                    set_msg('msg', 'Tipo editado com sucesso!', 'sucesso');
                     redirect('tipoArquivo');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel editar!'));
+                    set_msg('msg', 'Erro ao editar o cadastro!', 'erro');
                     redirect('tipoArquivo');
                 }
             }
@@ -129,16 +126,14 @@ class TipoArquivo extends CI_Controller {
 
             if ($id != NULL) {
                 if ($this->tipoArquivo->excluir(array('idtipo_arquivo' => $id))) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Tipo deletado com sucesso!'));
+                    set_msg('msg', 'Tipo deletado com sucesso!', 'sucesso');
                     redirect('tipoArquivo');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel deletar!'));
+                    set_msg('msg', 'Erro ao excluir o cadastro!', 'erro');
                     redirect('tipoArquivo');
                 }
             } else {
-                $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel recuperar o id!'));
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
                 redirect('tipoArquivo');
             }
         } else {

@@ -63,12 +63,10 @@ class Empresa extends CI_Controller {
                 }
 
                 if ($this->empresa->cadastrar($cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Empresa cadastrada com sucesso!'));
+                    set_msg('msg', 'Empresa cadastrada com sucesso!', 'sucesso');
                     redirect('empresa/cadastrar');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível realizar o cadastro!'));
+                    set_msg('msg', 'Não foi possível realizar o cadastro!', 'erro');
                     redirect('empresa/cadastrar');
                 }
             }
@@ -128,12 +126,10 @@ class Empresa extends CI_Controller {
                 }
 
                 if ($this->empresa->editar(array('idempresa' => $idempresa), $cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Empresa alterada com sucesso!'));
+                    set_msg('msg', 'Empresa alterada com sucesso!', 'sucesso');
                     redirect('empresa');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível alterar o cadastro!'));
+                    set_msg('msg', 'Não foi possível alterar o cadastro!', 'erro');
                     redirect('empresa');
                 }
             }
@@ -162,16 +158,14 @@ class Empresa extends CI_Controller {
             if ($idempresa != NULL) {
 
                 if ($this->empresa->excluir(array('idempresa' => $idempresa))) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Empresa excluída com sucesso!'));
+                    set_msg('msg', 'Empresa excluída com sucesso!', 'sucesso');
                     redirect('empresa');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao retirar do banco, verifique se não há alguma associação!'));
+                    set_msg('msg', 'Erro ao retirar do banco, verifique se não há alguma associação!', 'erro');
                     redirect('empresa');
                 }
             } else {
-                $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível excluir o cadastro, id não recebido!'));
+                set_msg('msg', 'Erro ao receber o id!', 'erro');
                 redirect('empresa');
             }
         } else {

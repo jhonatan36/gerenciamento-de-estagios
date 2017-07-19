@@ -5,6 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Usuario_model extends CI_Model {
 
     public function retorna_usuario($condicao = NULL, $ordem = NULL, $result = FALSE) {
+
+        $this->db->join('tbl_perfis', 'tbl_usuario.perfil = tbl_perfis.id', 'inner');
+        $this->db->select('tbl_usuario.matricula, tbl_usuario.nome, tbl_usuario.sobrenome, tbl_usuario.email, tbl_usuario.contato, tbl_usuario.status, tbl_usuario.idusuario, tbl_perfis.nome as perfil');
+
         if ($condicao != NULL) {
 
             $this->db->where($condicao);
@@ -16,35 +20,15 @@ class Usuario_model extends CI_Model {
         }
 
         if ($result) {
-            return $this->db->get('usuario')->result();
+            return $this->db->get('tbl_usuario')->result();
         }
 
-        return $this->db->get('usuario');
-    }
-    
-    public function retorna_aluno($condicao = NULL, $ordem = NULL, $result = FALSE) {
-        $this->db->join('aluno', 'aluno.usuario_idusuario = usuario.idusuario', 'inner');
-        
-        if ($condicao != NULL) {
-
-            $this->db->where($condicao);
-        }
-
-        if ($ordem != NULL) {
-
-            $this->db->order_by($ordem);
-        }
-
-        if ($result) {
-            return $this->db->get('usuario')->result();
-        }
-
-        return $this->db->get('usuario');
+        return $this->db->get('tbl_usuario');
     }
 
     public function cadastrar($dados = NULL, $dados_aluno = NULL) {
         if ($dados != NULL) {
-            if ($this->db->insert('usuario', $dados)) {
+            if ($this->db->insert('tbl_usuario', $dados)) {
 
                 return TRUE;
             } else {
@@ -63,9 +47,9 @@ class Usuario_model extends CI_Model {
             /* caso seja alteração para aluno */
             if ($dados['tipo_usuario'] == 1) {
                 //atualiza dados da tabela de usuario
-                if ($this->db->where(array('usuario_idusuario' => $condicao['idusuario']))->update('aluno', $dados_aluno)) {
+                if ($this->db->where(array('usuario_idusuario' => $condicao['idusuario']))->update('tbl_aluno', $dados_aluno)) {
                     //verifica se existe dados deste usuário na tabela de aluno
-                    if ($this->where(array('usuario_idusuario' => $condicao['idusuario']))->get('aluno')->num_rows() >= 1) {
+                    if ($this->where(array('usuario_idusuario' => $condicao['idusuario']))->get('tbl_aluno')->num_rows() >= 1) {
                         //se existir dados, atualia os mesmos
                         if ($this->db->where($condicao)->update('usuario', $dados)) {
                             return TRUE;
@@ -73,7 +57,7 @@ class Usuario_model extends CI_Model {
                         //se não existir dados, insere na tabela os novos.
                     } else {
                         $dados_aluno['usuario_idusuario'] = $condicao['idusuario'];
-                        if ($this->db->insert('aluno', $dados_aluno)) {
+                        if ($this->db->insert('tbl_aluno', $dados_aluno)) {
                             return TRUE;
                         } else {
                             return FALSE;
@@ -84,11 +68,11 @@ class Usuario_model extends CI_Model {
                 return FALSE;
             }
             /* caso seja alteração para outro tipo de usuário */ else {
-                if ($this->db->where($condicao)->update('usuario', $dados)) {
+                if ($this->db->where($condicao)->update('tbl_usuario', $dados)) {
                     //verifica se existe dados deste usuário na tabela de aluno
-                    if ($this->where(array('usuario_idusuario' => $condicao['idusuario']))->get('aluno')->num_rows() >= 1) {
+                    if ($this->where(array('usuario_idusuario' => $condicao['idusuario']))->get('tbl_aluno')->num_rows() >= 1) {
                         //se existir dados, deleta os mesmos pois foi alterado o tipo de usuário
-                        if ($this->db->delete('usuario', $condicao)) {
+                        if ($this->db->delete('tbl_usuario', $condicao)) {
                             return TRUE;
                         } else {
                             return FALSE;

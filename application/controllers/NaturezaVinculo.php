@@ -45,12 +45,10 @@ class NaturezaVinculo extends CI_Controller {
 
 
                 if ($this->naturezaVinculo->cadastrar($cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Natureza de Vinculo cadastrada com sucesso!'));
+                    set_msg('msg', 'Natureza cadastrada com sucesso!', 'sucesso');
                     redirect('naturezaVinculo/cadastrar');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel cadastrar!'));
+                    set_msg('msg', 'Não foi possível realizar o cadastro!', 'sucesso');
                     redirect('naturezaVinculo/cadastrar');
                 }
             }
@@ -79,6 +77,7 @@ class NaturezaVinculo extends CI_Controller {
             if ($id != NULL) {
                 $naturezaVinculo = $this->naturezaVinculo->retornar_naturezaVinculo(array('idnatureza_vinculo' => $id), NULL, NULL)->row();
             } else {
+                set_msg('msg', 'Erro ao receber o id!', 'erro');
                 redirect('naturezaVinculo');
             }
 
@@ -92,12 +91,10 @@ class NaturezaVinculo extends CI_Controller {
 
 
                 if ($this->naturezaVinculo->editar(array('idnatureza_vinculo' => $id), $cadastro)) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Natureza de Vinculo editada com sucesso!'));
+                    set_msg('msg', 'Natureza editada com sucesso!', 'sucesso');
                     redirect('naturezaVinculo');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel editar!'));
+                    set_msg('msg', 'Não foi possivel editar o cadastro!', 'erro');
                     redirect('naturezaVinculo');
                 }
             }
@@ -128,16 +125,14 @@ class NaturezaVinculo extends CI_Controller {
 
             if ($id != NULL) {
                 if ($this->naturezaVinculo->excluir(array('idnatureza_vinculo' => $id))) {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Natureza de vinculo deletada com sucesso!'));
+                    set_msg('msg', 'Natureza excluída com sucesso!', 'sucesso');
                     redirect('naturezaVinculo');
                 } else {
-
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel deletar!'));
+                    set_msg('msg', 'Não foi possível excluir o cadastro!', 'erro');
                     redirect('naturezaVinculo');
                 }
             } else {
-                $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Não foi possivel recuperar o id!'));
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
                 redirect('naturezaVinculo');
             }
         } else {
@@ -162,17 +157,19 @@ class NaturezaVinculo extends CI_Controller {
                     //funcionou
                     echo 'Associado!';
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Erro ao desassociar tipo de arquivo!'));
-                    redirect("naturezaVinculo/associarArquivo/$id");
+                    echo 'Erro ao associar!';
+                    //set_msg('msg', 'Erro!', 'erro');
+                    //redirect("naturezaVinculo/associarArquivo/$id");
                 }
             } else {
                 //remove
                 if ($this->naturezaVinculo->desassociar($dados)) {
                     //funcionou
-                    echo 'Desassociado!';
+                    echo 'Associação Removida!';
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Erro ao associar tipo de arquivo!'));
-                    redirect("naturezaVinculo/associarArquivo/$id");
+                    echo 'Erro ao remover associação!';
+                    //set_msg('msg', 'Erro!', 'erro');
+                    //redirect('naturezaVinculo/associarArquivo/$id');
                 }
             }
         } else {
