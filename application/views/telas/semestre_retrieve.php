@@ -54,16 +54,6 @@
                             </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Semestre</th>
-                                <th>Ano</th>
-                                <th>Início</th>
-                                <th>Término</th>
-                                <th>Status</th>
-                                <th>Opções</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->

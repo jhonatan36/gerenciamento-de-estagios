@@ -66,21 +66,6 @@
                             </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Razão Social</th>
-                                <th>CNPJ</th>
-                                <th>Início Vinculo</th>
-                                <th>Termino Vinculo</th>
-                                <th>Cidade</th>
-                                <th>Bairro</th>
-                                <th>Rua</th>
-                                <th>CEP</th>
-                                <th>E-mail</th>
-                                <th>Contato</th>
-                                <th>Opções</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->

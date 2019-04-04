@@ -52,14 +52,6 @@
                             </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Status</th>
-                                <th>Opções</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->

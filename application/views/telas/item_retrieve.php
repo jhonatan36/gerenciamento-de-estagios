@@ -57,17 +57,6 @@
                             </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Status</th>
-                                <th>Menu</th>
-                                <th>Método</th>
-                                <th>Data Cadastro</th>
-                                <th>Data Modificação</th>
-                                <th>Opções</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->

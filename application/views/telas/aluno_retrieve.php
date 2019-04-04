@@ -58,18 +58,6 @@
                             </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Matrícula</th>
-                                <th>Nome</th>
-                                <th>Sobrenome</th>
-                                <th>E-mail</th>
-                                <th>Contato</th>
-                                <th>Perfil do Usuário</th>
-                                <th>Status</th>
-                                <th>Opções</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->

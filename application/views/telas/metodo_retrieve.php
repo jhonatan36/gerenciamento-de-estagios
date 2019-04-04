@@ -60,19 +60,6 @@
                             </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Classe</th>
-                                <th>Método</th>
-                                <th>Descrição</th>
-                                <th>Apelido</th>
-                                <th>Privado</th>
-                                <th>Data de Criação</th>
-                                <th>Data de Modificação</th>
-                                <th>Opções</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
