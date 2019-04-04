@@ -21,17 +21,9 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Selecione um Perfil para atribuição.</label>
-                            <form id="perfil_permissao" action="<?php echo base_url('permissao'); ?>" method="POST">
-                                <div class="form-group">
-                                    <select id="controle_perfil" class="form-control" name="perfil">
-                                        <option value="">Selecione um perfil</option>
-                                        <?php foreach ($perfis as $perfil) { ?>
-                                            <option value="<?php echo $perfil->id; ?>" <?php if(isset($perfil_selecionado)){if($perfil_selecionado == $perfil->id){echo 'selected';}} ?>><?php echo $perfil->nome; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </form>
+                            <a href="<?=base_url('perfil')?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Voltar</a>
+                            <h1><?=$perfil_selecionado->nome?></h1>
+                            <hr/>
                         </div>
                     </div>
                     <?php if (isset($perfil_selecionado)) { ?>
@@ -53,7 +45,7 @@
                                             <?php foreach ($metodo as $linha) { ?>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input onchange="alterar_permissao(<?php echo $perfil_selecionado; ?>, <?php echo $linha->id; ?>)" type="checkbox" value="<?php echo $linha->id; ?>" <?php if($this->permissao->verifica_permissao($perfil_selecionado, $linha->id)){echo 'checked';} ?>> <?php echo $linha->metodo; ?>
+                                                        <input onchange="alterar_permissao(<?php echo $perfil_selecionado->id; ?>, <?php echo $linha->id; ?>)" type="checkbox" value="<?php echo $linha->id; ?>" <?php if($this->permissao->verifica_permissao($perfil_selecionado->id, $linha->id)){echo 'checked';} ?>> <?php echo $linha->metodo; ?>
                                                     </label>
                                                 </div>
                                             <?php } ?>

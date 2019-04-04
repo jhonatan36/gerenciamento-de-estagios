@@ -17,16 +17,15 @@ class Permissao extends CI_Controller {
 
         if ($permissao) {
 
+            $idPerfil = $this->input->get('perfil');
+            $perfil = $this->perfil->retorna_perfis(array('id'=>$idPerfil))->row();
+
             $dados = array(
-                'titulo' => 'Perfis',
+                'titulo' => 'Permissões do Perfil',
                 'tela' => 'permissao_retrieve',
-                'perfis' => $this->perfil->retorna_perfis(NULL, 'nome ASC', TRUE),
+                'perfil_selecionado' => $perfil,
                 'metodos' => $this->permissao->retorna_metodos()
             );
-
-            if ($this->input->post('perfil') != NULL) {
-                $dados['perfil_selecionado'] = $this->input->post('perfil');
-            }
 
             $this->load->view('system_view', $dados);
         } else {
@@ -51,8 +50,6 @@ class Permissao extends CI_Controller {
                         echo 'Permissão removida!';
                     } else {
                         echo 'Erro ao inserir permissão. Provavelmente você não tem privilegios suficientes.';
-                        //set_msg('msg', 'Erro!', 'erro');
-                        //redirect('permissao');
                     }
                 } else {
                     $dados = array(
@@ -63,8 +60,6 @@ class Permissao extends CI_Controller {
                         echo 'Permissão concedida!';
                     } else {
                         echo 'Erro ao remover permissão. Provavelmente você não tem privilegios suficientes.';
-                        //set_msg('msg', 'Erro!', 'erro');
-                        //redirect('permissao');
                     }
                 }
             }

@@ -46,8 +46,9 @@
                                 <td><?php $data_cadastro = explode(' ',$linha->data_cadastro); echo implode('/', array_reverse(explode('-',$data_cadastro[0]))).' '.$data_cadastro[1];?></td>
                                 <td><?php $data_modificacao = explode(' ',$linha->data_modificacao); echo implode('/', array_reverse(explode('-',$data_modificacao[0]))).' '.$data_modificacao[1];?></td>
                                 <td>
-                                    <a class="text-success" href="<?php echo base_url("perfil/editar/$linha->id"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
-                                    <a class="text-danger" href="<?php echo base_url("perfil/excluir/$linha->id"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                    <a class="text-success" href="<?php echo base_url("perfil/editar/$linha->id"); ?>" title="Editar"><i class="fa fa-pencil-square-o"></i></a>
+                                    <a class="text-info" href="<?php echo base_url("permissao?perfil=$linha->id"); ?>" title="Permissões"><i class="fa fa-list"></i></a>
+                                    <a class="text-danger" href="<?php echo base_url("perfil/excluir/$linha->id"); ?>" title="Excluir"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             <?php } ?>
