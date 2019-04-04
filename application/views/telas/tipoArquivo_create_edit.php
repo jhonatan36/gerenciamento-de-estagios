@@ -53,7 +53,8 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-xs-4 col-xs-offset-8">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Salvar</button>
+                            <button type="submit" class="btn btn-success btn-block btn-flat">Salvar</button>
+                            <a href="<?=base_url('tipoArquivo');?>" class="btn btn-danger btn-block btn-flat" >Cancelar</a>
                         </div>
                         <!-- /.col -->
                     </div>
