@@ -120,7 +120,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Dashboard
+            HOME
             <small><?php echo $titulo; ?></small>
         </h1>
         <ol class="breadcrumb">

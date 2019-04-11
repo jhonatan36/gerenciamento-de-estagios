@@ -47,23 +47,11 @@ class Aluno extends CI_Controller {
                     'contato' => $this->input->post('contato'),
                     'senha' => md5($this->input->post('senha')),
                     'status' => $this->input->post('status'),
-                    'data_cadastro' => $data_atual
+                    'periodo' => $this->input->post('periodo')
                 );
 
-                if ($this->input->post('tipo_usuario') == 1) {
-                    $cadastro_aluno = array(
-                        'carga_horaria_cumprida' => 0,
-                        'periodo' => $this->input->post('periodo')
-                    );
-                }
-
                 /* cadastra dados no banco */
-                if ($this->input->post('tipo_usuario') == 1) {
-                    $resposta = $this->usuario->cadastrar($cadastro);
-                    $resposta2 = $this->aluno->cadastrar($cadastro_aluno);
-                }
-
-                if ($resposta && $resposta2) {
+                if ($this->aluno->cadastrar($dados)) {
                     $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Usuário Cadastrado com sucesso!'));
                     redirect('aluno/cadastrar');
                 } else {
