@@ -120,7 +120,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            HOME
+            Início
             <small><?php echo $titulo; ?></small>
         </h1>
         <ol class="breadcrumb">
