@@ -40,8 +40,8 @@
                         <div class="form-group">
                             <label>Status</label>
                             <select name="status" class="form-control">
-                                <option value="0" <?php if(isset($naturezaVinculo) && $naturezaVinculo->status == 0){echo 'selected';} ?>>Desativado</option>
                                 <option value="1" <?php if(isset($naturezaVinculo) && $naturezaVinculo->status == 1){echo 'selected';} ?>>Ativo</option>
+                                <option value="0" <?php if(isset($naturezaVinculo) && $naturezaVinculo->status == 0){echo 'selected';} ?>>Inativo</option>
                             </select>
                         </div>
                         <?php if (isset($naturezaVinculo)) { ?>

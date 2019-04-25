@@ -107,18 +107,12 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Status do usuário</label>
+                                    <label>Status</label>
                                     <select name="status" class="form-control">
-                                        <option value="1">Ativo</option>
-                                        <option value="0">Inativo</option>
+                                        <option value="1" <?php if(isset($usuario) && $usuario->status == 1){echo 'selected';} ?>>Ativo</option>
+                                        <option value="0" <?php if(isset($usuario) && $usuario->status == 0){echo 'selected';} ?>>Inativo</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                
-                            </div>
-                            <div class="col-md-4">
-                                
                             </div>
                         </div>
                         
