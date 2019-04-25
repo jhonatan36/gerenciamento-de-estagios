@@ -33,7 +33,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>CNPJ</label>
-                                    <input name="cnpj" type="text" class="form-control" placeholder="99.999.999/9999-99" value="<?php
+                                    <input name="cnpj" type="text" class="form-control cnpj" placeholder="99.999.999/9999-99" value="<?php
                                     if (isset($empresa)) {
                                         if ($empresa != NULL) {
                                             echo $empresa->cnpj;
@@ -59,8 +59,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
-                                    <label>Contato</label>
-                                    <input name="contato" type="text" class="form-control" placeholder="(99)99999-9999" value="<?php
+                                    <label>Telefone de Contato</label>
+                                    <input name="contato" type="text" class="form-control telefoneContato" placeholder="(99) 99999-9999" value="<?php
                                     if (isset($empresa)) {
                                         if ($empresa != NULL) {
                                             echo $empresa->contato;
@@ -99,7 +99,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>CEP</label>
-                                    <input name="cep" type="text" class="form-control" placeholder="99.999-999" value="<?php
+                                    <input name="cep" type="text" class="form-control cep" placeholder="99.999-999" value="<?php
                                     if (isset($empresa)) {
                                         if ($empresa != NULL) {
                                             echo $empresa->cep;
@@ -150,7 +150,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>Número</label>
-                                    <input name="numero" type="text" class="form-control" placeholder="" value="<?php
+                                    <input name="numero" type="text" class="form-control" placeholder="Número" value="<?php
                                     if (isset($empresa)) {
                                         if ($empresa != NULL) {
                                             echo $empresa->numero;

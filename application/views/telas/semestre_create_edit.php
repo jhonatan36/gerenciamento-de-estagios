@@ -34,7 +34,7 @@
                             <div class="col-md-6">
                                 <div class="form-group has-feedback">
                                     <label>Ano</label>
-                                    <input name="ano" type="number" class="form-control" placeholder="Ano" value="<?php
+                                    <input name="ano" type="number" maxlength="4" min="0" class="form-control" placeholder="Ano" value="<?php
                                     if (isset($semestre)) {
                                         if ($semestre != NULL) {
                                             echo $semestre->ano;

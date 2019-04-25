@@ -55,7 +55,7 @@ class Sistema extends CI_Controller {
                                 'data_cadastro' => $data_cadastro,
                                 'perfil' => $login->perfil,
                                 'registro' => time(),
-                                'limite' => 900
+                                'limite' => 1800
                             ));
 
                             redirect('sistema');

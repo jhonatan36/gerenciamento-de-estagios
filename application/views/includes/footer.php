@@ -24,6 +24,8 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!--jQuery Mask-->
+<script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
 <!--Scripts Formulários-->
 <script src="<?php echo base_url(); ?>assets/js/scripts_formularios.js"></script>
 <script>

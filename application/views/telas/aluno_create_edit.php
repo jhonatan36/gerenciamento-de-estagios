@@ -23,7 +23,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>CPF</label>
-                                    <input name="cpf" type="text" class="form-control" placeholder="" value="<?php
+                                    <input name="cpf" type="text" class="form-control cpf" placeholder="999.999.999-99" value="<?php
                                     if (isset($usuario)) {
                                         if ($usuario != NULL) {
                                             echo $usuario->cpf;
@@ -49,7 +49,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>E-mail</label>
-                                    <input name="email" type="email" class="form-control" placeholder="Email" value="<?php
+                                    <input name="email" type="email" class="form-control" placeholder="email@email.com" value="<?php
                                     if (isset($usuario)) {
                                         if ($usuario != NULL) {
                                             echo $usuario->email;
@@ -78,7 +78,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>Telefone de Contato</label>
-                                    <input name="contato" type="text" class="form-control" placeholder="Contato" value="<?php
+                                    <input name="contato" type="text" class="form-control telefoneContato" placeholder="(99) 99999-9999" value="<?php
                                     if (isset($usuario)) {
                                         if ($usuario != NULL) {
                                             echo $usuario->contato;
@@ -91,7 +91,7 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>Carga horária cumprida (Período)</label>
-                                    <input name="cargaHoraria" type="text" class="form-control" placeholder="" value="<?php
+                                    <input name="cargaHoraria" type="text" maxlength="4" class="form-control" placeholder="Horas Cumpridas" value="<?php
                                     if (isset($usuario)) {
                                         if ($usuario != NULL) {
                                             echo $usuario->cargaHoraria;
