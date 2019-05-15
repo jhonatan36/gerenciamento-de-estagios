@@ -9,6 +9,7 @@ class Aluno extends CI_Controller {
         /* declarações globais */
         $this->load->model('sistema_model', 'sistema');
         $this->load->model('usuario_model', 'usuario');
+        $this->load->model('aluno_model', 'aluno');
         date_default_timezone_set('America/Sao_Paulo');
     }
 
