@@ -47,7 +47,7 @@ class Perfil extends CI_Controller {
                 } else {
                     set_msg('msg', 'Erro ao cadastrar!', 'sucesso');
                     redirect('perfil');
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Erro ao cadastrar!'));
+                    $this->session->set_flashdata('msg', $this->sistema->gera_mensagem('alert-danger', 'Erro ao cadastrar!'));
                     redirect('perfil/cadastrar');
                 }
             }

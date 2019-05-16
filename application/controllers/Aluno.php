@@ -53,10 +53,10 @@ class Aluno extends CI_Controller {
 
                 /* cadastra dados no banco */
                 if ($this->aluno->cadastrar($dados)) {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-success', 'Usuário Cadastrado com sucesso!'));
+                    $this->session->set_flashdata('msg', $this->sistema->gera_mensagem('alert-success', 'Usuário Cadastrado com sucesso!'));
                     redirect('aluno/cadastrar');
                 } else {
-                    $this->session->set_flashdata('mensagem', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível realizar o cadastro!'));
+                    $this->session->set_flashdata('msg', $this->sistema->gera_mensagem('alert-danger', 'Não foi possível realizar o cadastro!'));
                     redirect('aluno/cadastrar');
                 }
             }
