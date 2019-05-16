@@ -5,8 +5,8 @@
         <div class="col-md-12">
 
             <?php
-            if ($this->session->flashdata('mensagem') != NULL) {
-                echo $this->session->flashdata('mensagem');
+            if ($this->session->flashdata('msg') != NULL) {
+                echo $this->session->flashdata('msg');
             }
             ?>
 
