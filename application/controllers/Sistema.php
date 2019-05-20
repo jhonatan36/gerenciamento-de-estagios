@@ -8,6 +8,13 @@ class Sistema extends CI_Controller {
         parent::__construct();
         /* declarações globais */
         $this->load->model('sistema_model', 'sistema');
+
+        //constantes para comparar perfis
+        define("COORD", "COORD");
+        define("ALUNO", "ALUNO");
+        define("SUPER", "SUPER");
+        define("ORIEN", "ORIEN");
+        define("ADMIN", "ADMIN");
     }
 
     public function index() {

@@ -43,8 +43,8 @@
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <?php
-                    if ($this->session->flashdata('mensagem') != NULL) {
-                        echo $this->session->flashdata('mensagem');
+                    if ($this->session->flashdata('msg') != NULL) {
+                        echo $this->session->flashdata('msg');
                     }
                     ?>
                     <div class="row">
