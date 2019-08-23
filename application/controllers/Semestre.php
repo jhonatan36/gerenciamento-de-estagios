@@ -45,7 +45,7 @@ class Semestre extends CI_Controller {
                     'ano' => $this->input->post('ano'),
                     'data_inicio' => $data_inicio,
                     'data_final' => $data_final,
-                    'ativo' => $this->input->post('ativo'),
+                    'status' => $this->input->post('status'),
                 );
 
                 if ($this->semestre->cadastrar($cadastro)) {

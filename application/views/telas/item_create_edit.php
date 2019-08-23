@@ -14,7 +14,6 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><?php echo $titulo; ?></h3>
                 </div>
-                
 
                 <form action="<?php echo base_url("item/$funcao"); ?>" method="post">
                     <div class="box-body">
@@ -36,7 +35,7 @@
                                     <label>Menu</label>
                                     <select name="menu" class="form-control">
                                         <?php foreach($menus as $menu){ ?>
-                                        <option value="<?php echo $menu->id; ?>" <?php if(isset($item) && $item->menu == $menu->id){echo 'selected';} ?>><?php echo $menu->nome; ?></option>
+                                        <option value="<?php echo $menu->id; ?>" <?php if(isset($item) && $item->id_menu == $menu->id){echo 'selected';} ?>><?php echo $menu->nome; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

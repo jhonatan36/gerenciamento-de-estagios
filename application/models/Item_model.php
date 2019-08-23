@@ -11,6 +11,7 @@ class Item_model extends CI_Model {
                 . 'tbl_menus_itens.data_cadastro as data_cadastro, '
                 . 'tbl_menus_itens.data_modificacao as data_modificacao, '
                 . 'tbl_menus.nome as menu, '
+                . 'tbl_menus.id as id_menu,'
                 . 'tbl_metodos.apelido as metodo');
         $this->db->join('tbl_menus', 'tbl_menus.id=tbl_menus_itens.id_menu', 'inner');
         $this->db->join('tbl_metodos', 'tbl_metodos.id=tbl_menus_itens.id_metodo', 'inner');

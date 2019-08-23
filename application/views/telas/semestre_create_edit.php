@@ -74,7 +74,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="ativo" class="form-control">
+                                    <select name="status" class="form-control">
                                         <option value="1" <?php if(isset($semestre) && $semestre->ativo == 1){echo 'selected';} ?>>Ativo</option>
                                         <option value="0" <?php if(isset($semestre) && $semestre->ativo == 0){echo 'selected';} ?>>Inativo</option>
                                     </select>

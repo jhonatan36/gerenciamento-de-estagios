@@ -60,8 +60,11 @@
                                 <td><?php echo $linha->email ;?></td>
                                 <td><?php echo $linha->contato ;?></td>
                                 <td>
-                                    <a class="text-success" href="<?php echo base_url("empresa/editar/$linha->idempresa"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
-                                    <a class="text-danger" href="<?php echo base_url("empresa/excluir/$linha->idempresa"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                
+                                <div class="btn-group btn-group-sm">
+                                    <a class="btn btn-sm btn-warning" href="<?php echo base_url("empresa/editar/$linha->idempresa"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url("empresa/excluir/$linha->idempresa"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                </div>
                                 </td>
                             </tr>
                             <?php } ?>

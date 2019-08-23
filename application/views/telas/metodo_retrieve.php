@@ -55,7 +55,10 @@
                                 <td><?php $data = explode(' ', $linha->data_criacao); echo $data = implode('/', array_reverse(explode('-', $data[0]))).' '.$data[1]; ?></td>
                                 <td><?php $data = explode(' ', $linha->data_modificacao); echo $data = implode('/', array_reverse(explode('-', $data[0]))).' '.$data[1]; ?></td>
                                 <td>
-                                    <a class="text-danger" href="javascript:func()" onclick="confirma_exclusao_metodo('<?= $linha->id ?>')"><i class="fa fa-trash-o"></i></a>
+                                
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-sm btn-danger" href="javascript:func()" onclick="confirma_exclusao_metodo('<?= $linha->id ?>')"><i class="fa fa-trash-o"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php } ?>

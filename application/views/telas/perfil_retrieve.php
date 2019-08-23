@@ -46,9 +46,11 @@
                                 <td><?php $data_cadastro = explode(' ',$linha->data_cadastro); echo implode('/', array_reverse(explode('-',$data_cadastro[0]))).' '.$data_cadastro[1];?></td>
                                 <td><?php $data_modificacao = explode(' ',$linha->data_modificacao); echo implode('/', array_reverse(explode('-',$data_modificacao[0]))).' '.$data_modificacao[1];?></td>
                                 <td>
-                                    <a class="text-success" href="<?php echo base_url("perfil/editar/$linha->id"); ?>" title="Editar"><i class="fa fa-pencil-square-o"></i></a>
-                                    <a class="text-info" href="<?php echo base_url("permissao?perfil=$linha->id"); ?>" title="Permissões"><i class="fa fa-list"></i></a>
-                                    <a class="text-danger" href="<?php echo base_url("perfil/excluir/$linha->id"); ?>" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-sm btn-warning" href="<?php echo base_url("perfil/editar/$linha->id"); ?>" title="Editar"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a class="btn btn-sm btn-info" href="<?php echo base_url("permissao?perfil=$linha->id"); ?>" title="Permissões"><i class="fa fa-lock"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="<?php echo base_url("perfil/excluir/$linha->id"); ?>" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -70,7 +72,7 @@
                     <h3 class="box-title">Ferramentas</h3>
                 </div>
                 <div class="box-body">
-                    <a href="<?php echo base_url('perfil/cadastrar'); ?>" class="btn btn-info"><i class="fa fa-plus-square"></i> Novo</a>
+                    <a href="<?php echo base_url('perfil/cadastrar'); ?>" class="btn btn-primary"><i class="fa fa-plus-square"></i> Novo</a>
                 </div>
             </div>
         </div>

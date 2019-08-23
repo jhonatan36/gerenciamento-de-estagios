@@ -43,13 +43,11 @@ class Usuario extends CI_Controller {
                 $cadastro = array(
                     'perfil' => $this->input->post('tipo_usuario'),
                     'nome' => $this->input->post('nome'),
-                    'sobrenome' => $this->input->post('sobrenome'),
                     'matricula' => $this->input->post('matricula'),
                     'email' => $this->input->post('email'),
                     'contato' => $this->input->post('contato'),
                     'senha' => md5($this->input->post('senha')),
-                    'status' => $this->input->post('status'),
-                    'data_cadastro' => $data_atual
+                    'status' => $this->input->post('status')
                 );
 
                 /* cadastra dados no banco */
@@ -90,7 +88,6 @@ class Usuario extends CI_Controller {
                 $cadastro = array(
                     'tipo_usuario' => $this->input->post('tipo_usuario'),
                     'nome' => $this->input->post('nome'),
-                    'sobrenome' => $this->input->post('sobrenome'),
                     'matricula' => $this->input->post('matricula'),
                     'email' => $this->input->post('email'),
                     'contato' => $this->input->post('contato'),

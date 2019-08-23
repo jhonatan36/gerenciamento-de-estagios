@@ -52,8 +52,11 @@
                                 <td><?php echo $linha->periodo; ?></td>
                                 <td><?php if($linha->status == 1){echo 'Ativo';}else{echo 'Suspenso';} ?></td>
                                 <td>
-                                    <a class="text-success" href="<?php echo base_url("usuario/editar/$linha->idusuario"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
-                                    <a class="text-danger" href="<?php echo base_url("usuario/excluir/$linha->idusuario"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                
+                                <div class="btn-group btn-group-sm">
+                                    <a class="btn btn-sm btn-warning" href="<?php echo base_url("usuario/editar/$linha->idusuario"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url("usuario/excluir/$linha->idusuario"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                </div>
                                 </td>
                             </tr>
                             <?php } ?>

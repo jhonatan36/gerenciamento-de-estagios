@@ -45,9 +45,12 @@
                                 <td><?php echo $linha->descricao;?></td>
                                 <td><?php if($linha->status==1){echo 'Ativo';}else if($linha->status==0){echo 'Desativado';}?></td>
                                 <td>
-                                    <a title="Editar" class="text-success" href="<?php echo base_url("naturezaVinculo/editar/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-pencil-square-o"></i></a>
-                                    <a title="Associar" class="text-warning" href="<?php echo base_url("naturezaVinculo/associarArquivo/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-list"></i></a>
-                                    <a title="Apagar" class="text-danger" onclick="return confirm('Deseja excluir esta Natureza de Vinculo ?');" href="<?php echo base_url("naturezaVinculo/excluir/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-trash-o"></i></a>
+                                
+                                    <div class="btn-group btn-group-sm">
+                                        <a title="Editar" class="btn btn-sm btn-warning" href="<?php echo base_url("naturezaVinculo/editar/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a title="Associar" class="btn btn-sm btn-info" href="<?php echo base_url("naturezaVinculo/associarArquivo/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-list"></i></a>
+                                        <a title="Apagar" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir esta Natureza de Vinculo ?');" href="<?php echo base_url("naturezaVinculo/excluir/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-trash-o"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php } ?>

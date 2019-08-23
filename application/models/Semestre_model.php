@@ -22,7 +22,7 @@ class Semestre_model extends CI_Model {
     public function cadastrar($dados = NULL){
         if($dados!=NULL){
             
-            if($this->db->insert('semestre_letivo', $dados)){
+            if($this->db->insert('tbl_semestre_letivo', $dados)){
                 return TRUE;
             }else{
                 return FALSE;

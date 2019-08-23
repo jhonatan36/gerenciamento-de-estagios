@@ -13,6 +13,8 @@
             <span class="sr-only">Toggle navigation</span>
         </a>
 
+        <?php echo $this->uri->segment(1); ?>
+
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
@@ -80,7 +82,7 @@
 
                         ?>
                             <a href="#">
-                                <i class="fa fa-users"></i> <span><?= $val->nome; ?></span>
+                                <i class="fa fa-angle-right"></i> <span><?= $val->nome; ?></span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -99,7 +101,7 @@
                                 }
                                 ?>">
                                     <a href="<?php echo base_url($i->apelido); ?>">
-                                        <i class="fa fa-user"></i> <?= $i->nome; ?>
+                                        <i class="fa fa-angle-double-right"></i> <?= $i->nome; ?>
                                     </a>
                                 </li>
 

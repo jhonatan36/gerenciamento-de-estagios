@@ -46,10 +46,13 @@
                                 <td><?php echo $linha->ano;?></td>
                                 <td><?php echo implode('/', array_reverse(explode('-',$linha->data_inicio)));?></td>
                                 <td><?php echo implode('/', array_reverse(explode('-',$linha->data_final)));?></td>
-                                <td><?php if($linha->ativo==1){echo 'Ativo';}else if($linha->ativo==0){echo 'Desativado';}?></td>
+                                <td><?php if($linha->status==1){echo 'Ativo';}else if($linha->status==0){echo 'Desativado';}?></td>
                                 <td>
-                                    <a class="text-success" href="<?php echo base_url("semestre/editar/$linha->idsemestre_letivo"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
-                                    <a class="text-danger" href="<?php echo base_url("semestre/excluir/$linha->idsemestre_letivo"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-sm btn-warning" href="<?php echo base_url("semestre/editar/$linha->idsemestre_letivo"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="<?php echo base_url("semestre/excluir/$linha->idsemestre_letivo"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php } ?>

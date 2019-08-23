@@ -35,7 +35,7 @@
 
                 <form action="<?php echo base_url('sistema/logar'); ?>" method="post">
                     <div class="form-group has-feedback">
-                        <input name="matricula" type="number" class="form-control" placeholder="Matrícula">
+                        <input name="matricula" type="text" maxlength="30" class="form-control" placeholder="Usuário/Matrícula">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">

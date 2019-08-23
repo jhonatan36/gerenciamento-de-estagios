@@ -51,8 +51,11 @@
                                 <td><?php $data_cadastro = explode(' ',$linha->data_cadastro); echo implode('/', array_reverse(explode('-',$data_cadastro[0]))).' '.$data_cadastro[1];?></td>
                                 <td><?php $data_modificacao = explode(' ',$linha->data_modificacao); echo implode('/', array_reverse(explode('-',$data_modificacao[0]))).' '.$data_modificacao[1];?></td>
                                 <td>
-                                    <a class="text-success" href="<?php echo base_url("item/editar/$linha->id"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
-                                    <a class="text-danger" onclick="return confirm('Deseja excluir este item ?');" href="<?php echo base_url("item/excluir/$linha->id"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-sm btn-warning" href="<?php echo base_url("item/editar/$linha->id"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
+                                        <a class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir este item ?');" href="<?php echo base_url("item/excluir/$linha->id"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php } ?>

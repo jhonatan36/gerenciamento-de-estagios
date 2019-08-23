@@ -31,7 +31,6 @@
                             <tr>
                                 <th>Matrícula</th>
                                 <th>Nome</th>
-                                <th>Sobrenome</th>
                                 <th>E-mail</th>
                                 <th>Contato</th>
                                 <th>Perfil do Usuário</th>
@@ -44,14 +43,15 @@
                             <tr>
                                 <td><?php echo $linha->matricula ;?></td>
                                 <td><?php echo $linha->nome ;?></td>
-                                <td><?php echo $linha->sobrenome ;?></td>
                                 <td><?php echo $linha->email ;?></td>
                                 <td><?php if($linha->contato!=NULL){echo $linha->contato;}else{echo '-';}?></td>
                                 <td><?php echo $linha->perfil; ?></td>
                                 <td><?php if($linha->status == 1){echo 'Ativo';}else{echo 'Suspenso';} ?></td>
                                 <td>
-                                    <a class="text-success" href="<?php echo base_url("usuario/editar/$linha->idusuario"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
-                                    <a class="text-danger" href="<?php echo base_url("usuario/excluir/$linha->idusuario"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-sm btn-warning" href="<?php echo base_url("usuario/editar/$linha->idusuario"); ?>" title=""><i class="fa fa-pencil-square-o"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="<?php echo base_url("usuario/excluir/$linha->idusuario"); ?>" title=""><i class="fa fa-trash-o"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php } ?>
