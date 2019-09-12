@@ -36,22 +36,40 @@ class TipoArquivo extends CI_Controller {
 
         if ($permissao) {
 
-            if ($this->input->post() != NULL) {
+            if(isset($_FILES['arquivo']['error']) && ($_FILES['arquivo']['error'] === 0)){
+
+                $nomeArquivo = preg_replace('/[ -]+/', '_', $_FILES['arquivo']['name']);
+                $upload_dir = './assets/uploads/required_files/';
+
+                $config = [
+                    'allowed_types' => 'pdf',
+                    'upload_path' => $upload_dir,
+                    'file_name' => $nomeArquivo
+                ];
+
+                $this->load->library('upload', $config);
 
                 $cadastro = array(
                     'nome' => $this->input->post('nome'),
                     'descricao' => $this->input->post('descricao'),
+                    'diretorio' => '/assets/uploads/required_files/'.$nomeArquivo,
                     'status' => $this->input->post('status')
                 );
 
+                if($this->upload->do_upload('arquivo')){
+                    if ($this->tipoArquivo->cadastrar($cadastro)) {
+                        set_msg('msg', 'Arquivo cadastrado com sucesso!', 'sucesso');
+                        redirect('tipoArquivo');
+                    } else {
+                        //remover o arquivo
 
-                if ($this->tipoArquivo->cadastrar($cadastro)) {
-                    set_msg('msg', 'Tipo cadastrado com sucesso!', 'sucesso');
-                    redirect('tipoArquivo/cadastrar');
+                        set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
+                        redirect('tipoArquivo/cadastrar');
+                    }
                 } else {
-                    set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
-                    redirect('tipoArquivo/cadastrar');
+                    print_r($this->upload->data());
                 }
+
             }
 
             $dados = array(

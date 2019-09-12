@@ -4,7 +4,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Estágios</b> UNIMONTES</span>
+        <span class="logo-lg"><b>Estágios</b> UNI</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -12,8 +12,6 @@
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
-
-        <?php echo $this->uri->segment(1); ?>
 
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -93,13 +91,16 @@
                         ?>
 
                         <ul class="treeview-menu">
-                            <?php foreach ($itens as $i) { ?>
+                            <?php foreach ($itens as $i) {
 
-                                <li class="<?php
-                                if ($this->uri->segment(1) == 'usuario') {
-                                    echo 'active';
+                                $metodo = explode('/',$i->apelido);
+                            ?>
+
+                                <li <?php
+                                if ($this->uri->segment(1) == $metodo[0]) {
+                                    echo 'class="active"';
                                 }
-                                ?>">
+                                ?>>
                                     <a href="<?php echo base_url($i->apelido); ?>">
                                         <i class="fa fa-angle-double-right"></i> <?= $i->nome; ?>
                                     </a>
