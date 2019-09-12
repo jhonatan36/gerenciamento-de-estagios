@@ -17,7 +17,6 @@
 
                 <form role="form" action="<?php echo base_url("aluno/$funcao"); ?>" method="post">
                     <div class="box-body">
-                        <input type="hidden" name="tipo_usuario" value="1" />
                         
                         <div class="row">
                             <div class="col-md-4">

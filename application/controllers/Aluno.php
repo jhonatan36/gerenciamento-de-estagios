@@ -40,16 +40,17 @@ class Aluno extends CI_Controller {
             /* recebe dados do formulario para cadastro */
             if ($this->input->post() != NULL) {
                 $cadastro = array(
-                    'perfil' => $this->input->post('tipo_usuario'),
-                    'nome' => $this->input->post('nome'),
-                    'sobrenome' => $this->input->post('sobrenome'),
+                    'perfil' => 5,
+                    'nomeCompleto' => $this->input->post('nomeCompleto'),
                     'matricula' => $this->input->post('matricula'),
                     'email' => $this->input->post('email'),
                     'contato' => $this->input->post('contato'),
-                    'senha' => md5($this->input->post('senha')),
+                    'senha' => md5($this->input->post('matricula')),
                     'status' => $this->input->post('status'),
-                    'periodo' => $this->input->post('periodo')
+                    'cargaHoraria' => $this->input->post('cargaHoraria')
                 );
+
+                print_r($cadastro);die;
 
                 /* cadastra dados no banco */
                 if ($this->aluno->cadastrar($dados)) {
