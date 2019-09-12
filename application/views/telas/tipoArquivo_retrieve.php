@@ -33,6 +33,7 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Descrição</th>
+                                <th>Arquivo</th>
                                 <th>Status</th>
                                 <th>Opções</th>
                             </tr>
@@ -42,6 +43,7 @@
                             <tr>
                                 <td><?php echo $linha->nome;?></td>
                                 <td><?php echo $linha->descricao;?></td>
+                                <td><a class="btn btn-info" href="<?=base_url($linha->diretorio)?>" target="_blank"><i class="fa fa-external-link"></i> Ver</a></td>
                                 <td><?php if($linha->status==1){echo 'Ativo';}else if($linha->status==0){echo 'Desativado';}?></td>
                                 <td>
                                 

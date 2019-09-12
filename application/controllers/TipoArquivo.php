@@ -56,6 +56,11 @@ class TipoArquivo extends CI_Controller {
                     'status' => $this->input->post('status')
                 );
 
+                //cria o diretorio caso não exista
+                if(!is_dir($upload_dir)){
+                    mkdir($upload_dir, 0777, true);
+                }
+
                 if($this->upload->do_upload('arquivo')){
                     if ($this->tipoArquivo->cadastrar($cadastro)) {
                         set_msg('msg', 'Arquivo cadastrado com sucesso!', 'sucesso');
