@@ -24,6 +24,9 @@ application/logs/*
 #Database
 application/config/database.php
 
+#pasta de uploads
+assets/uploads/
+
 ### CodeIgniter Patch ###
 
 # End of https://www.gitignore.io/api/codeigniter
