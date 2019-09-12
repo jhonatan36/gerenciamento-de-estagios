@@ -14,8 +14,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><?php echo $titulo; ?></h3>
                 </div>
-                
-                <form action="<?php echo base_url("tipoArquivo/$funcao"); ?>" method="post">
+
+                <form action="<?php echo base_url("tipoArquivo/$funcao"); ?>" method="post" enctype="multipart/form-data">
 
                     <div class="box-body">
                         <div class="form-group has-feedback">
@@ -37,6 +37,10 @@
                                 }
                             }
                             ?></textarea>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label>Arquivo (.pdf)</label>
+                            <input name="arquivo" type="file" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label>Status</label>
