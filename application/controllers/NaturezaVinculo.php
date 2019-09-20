@@ -46,7 +46,7 @@ class NaturezaVinculo extends CI_Controller {
 
                 if ($this->naturezaVinculo->cadastrar($cadastro)) {
                     set_msg('msg', 'Natureza cadastrada com sucesso!', 'sucesso');
-                    redirect('naturezaVinculo/cadastrar');
+                    redirect('naturezaVinculo');
                 } else {
                     set_msg('msg', 'Não foi possível realizar o cadastro!', 'sucesso');
                     redirect('naturezaVinculo/cadastrar');
@@ -185,7 +185,7 @@ class NaturezaVinculo extends CI_Controller {
             $this->load->model('tipoArquivo_model', 'tipoArquivo');
 
             $dados = array(
-                'titulo' => 'Associar Tipos',
+                'titulo' => 'Associando arquivos Necessários',
                 'tela' => 'naturezaVinculo_associar',
                 'natureza' => $naturezaVinculo,
                 'tipoArquivo' => $this->tipoArquivo->retornar_tipoArquivo(NULL, NULL, TRUE)

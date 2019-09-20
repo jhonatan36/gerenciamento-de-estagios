@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="box-body">
-                    <h4 class="text-right"><?= 'Para a Natureza de Vínculo: '.$natureza->nome; ?></h4>
+                    <h4 class="text-right"><?= 'Para a Natureza de Vínculo: '; ?><b><?=$natureza->nome?></b></h4>
                     <?php foreach ($tipoArquivo as $linha) { ?>
 
                         <div class="checkbox">

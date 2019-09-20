@@ -48,7 +48,7 @@
                                 
                                     <div class="btn-group btn-group-sm">
                                         <a title="Editar" class="btn btn-sm btn-warning" href="<?php echo base_url("naturezaVinculo/editar/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a title="Associar" class="btn btn-sm btn-info" href="<?php echo base_url("naturezaVinculo/associarArquivo/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-list"></i></a>
+                                        <a title="Associar Arquivos Necessários" class="btn btn-sm btn-info" href="<?php echo base_url("naturezaVinculo/associarArquivo/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-list"></i></a>
                                         <a title="Apagar" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir esta Natureza de Vinculo ?');" href="<?php echo base_url("naturezaVinculo/excluir/$linha->idnatureza_vinculo"); ?>"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </td>
