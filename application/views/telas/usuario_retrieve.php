@@ -7,13 +7,12 @@
                     <h3 class="box-title">Filtros</h3>
                 </div>
                 <div class="box-body">
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-md-12">

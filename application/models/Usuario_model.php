@@ -7,7 +7,7 @@ class Usuario_model extends CI_Model {
     public function retorna_usuario($condicao = NULL, $ordem = NULL, $result = FALSE) {
 
         $this->db->join('tbl_perfis', 'tbl_usuario.perfil = tbl_perfis.id', 'inner');
-        $this->db->select('tbl_usuario.matricula, tbl_usuario.nome, tbl_usuario.sobrenome, tbl_usuario.email, tbl_usuario.contato, tbl_usuario.status, tbl_usuario.idusuario, tbl_perfis.nome as perfil');
+        $this->db->select('tbl_usuario.matricula, tbl_usuario.cpf, tbl_usuario.nome, tbl_usuario.email, tbl_usuario.contato, tbl_usuario.status, tbl_usuario.idusuario, tbl_perfis.nome as perfil');
 
         if ($condicao != NULL) {
 
