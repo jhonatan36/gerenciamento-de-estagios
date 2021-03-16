@@ -67,7 +67,7 @@ class Usuario extends CI_Controller {
                 'tela' => 'usuario_create_edit',
                 'titulo' => 'Cadastrar Usuário',
                 'funcao' => 'cadastrar',
-                'perfis' => $this->perfil->retorna_perfis(NULL, 'nome ASC', TRUE)
+                'perfis' => $this->perfil->retorna_perfis(['status'=>1], 'nome ASC', TRUE)
             );
 
             $this->load->view('system_view', $dados);

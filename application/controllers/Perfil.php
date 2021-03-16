@@ -70,33 +70,39 @@ class Perfil extends CI_Controller {
 
         if ($permissao) {
 
-            if ($this->input->post() != NULL) {
+            $id = $this->uri->segment(3);
+            
+            if ($id != NULL) {
+                $perfil = $this->perfil->retorna_perfis(['id'=>$id], null, false)->row();
+            }else{
+                set_msg('msg', 'Erro ao recuperar o id!', 'erro');
+                redirect('perfil');
+            }
 
-                $id = $this->uri->segment(3);
-                if ($id != NULL) {
-                    $cadastro = array(
-                        'nome' => $this->input->post('nome'),
-                        'status' => $this->input->post('status')
-                    );
+            if($this->input->post() != NULL){
+                $cadastro = array(
+                    'nome' => $this->input->post('nome'),
+                    'status' => $this->input->post('status')
+                );
 
-                    if ($this->perfil->editar(array('id' => $id), $cadastro)) {
-                        set_msg('msg', 'Perfil editado com sucesso!', 'sucesso');
-                        redirect('perfil');
-                    } else {
-                        set_msg('msg', 'Erro ao editar!', 'erro');
-                        redirect('perfil');
-                    }
+                if ($this->perfil->editar(array('id' => $id), $cadastro)) {
+                    set_msg('msg', 'Perfil editado com sucesso!', 'sucesso');
+                    redirect('perfil');
                 } else {
-                    set_msg('msg', 'Erro ao identificar o id!', 'erro');
+                    set_msg('msg', 'Erro ao editar!', 'erro');
                     redirect('perfil');
                 }
             }
 
             $dados = array(
-                'titulo' => 'Cadastrar Perfil',
+                'titulo' => 'Editar Perfil',
                 'tela' => 'perfil_create_edit',
-                'funcao' => 'cadastrar'
+                'funcao' => "editar/$id"
             );
+
+            if(isset($perfil) && ($perfil!=NULL)){
+                $dados['perfil'] = $perfil;
+            }
 
             $this->load->view('system_view', $dados);
         } else {

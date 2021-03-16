@@ -26,7 +26,7 @@ class Empresa_model extends CI_Model {
         
         if($dados != NULL){
             
-                 if($this->db->insert('empresa', $dados)){
+                 if($this->db->insert('tbl_empresa', $dados)){
                      return TRUE;
                  }else{
                      return FALSE;
