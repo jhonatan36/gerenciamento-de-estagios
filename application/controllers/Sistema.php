@@ -8,6 +8,8 @@ class Sistema extends CI_Controller {
         parent::__construct();
         /* declarações globais */
         $this->load->model('sistema_model', 'sistema');
+        $this->load->model('usuario_model', 'usuario');
+        $this->load->model('perfil_model', 'perfil');
 
         //constantes para comparar perfis
         define("COORD", "COORD");
@@ -73,7 +75,7 @@ class Sistema extends CI_Controller {
                         }
                     } else {
                         //mensagem de erro.
-                        set_msg('msg', 'Usuário e/ou senha incorreto(s)!', 'erro');
+                        set_msg('msg', 'Usuário e/ou senha incorreto(s)! verifique os dados e tente novamente.', 'erro');
                         redirect('sistema/logar');
                     }
                 }
@@ -84,6 +86,38 @@ class Sistema extends CI_Controller {
 
                 $this->load->view('login', $dados);
             }
+    }
+
+    public function cadastro(){
+
+        if ($this->input->post() != NULL) {
+
+            $perfil = $this->perfil->retorna_perfis(['nome' => 'Aluno'], null, false)->row();
+
+            $cadastro = array(
+                'perfil' => $perfil->id,
+                'nome' => $this->input->post('nome'),
+                'matricula' => $this->input->post('matricula'),
+                'email' => $this->input->post('email'),
+                'senha' => md5($this->input->post('senha')),
+                'status' => 0
+            );
+
+            if ( $this->input->post('contato') != null ) {
+                $cadastro['contato'] = $this->input->post('contato');
+            }
+
+
+            if($this->usuario->cadastrar($cadastro)){
+                set_msg('msg', 'Cadastro efetuado, aguarde autorização do Coorndeador de Estágio para acessar o sistema!', 'sucesso');
+                redirect('sistema/logar');
+            }else{
+                set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
+                redirect('sistema/cadastro');
+            }
+        }
+
+        $this->load->view('cadastro');
     }
 
     public function deslogar() {

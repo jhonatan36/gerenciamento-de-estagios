@@ -40,6 +40,7 @@ class NaturezaVinculo extends CI_Controller {
                 $cadastro = array(
                     'nome' => $this->input->post('nome'),
                     'descricao' => $this->input->post('descricao'),
+                    'carga_horaria_maxima' => $this->input->post('carga_horaria_maxima'),
                     'status' => $this->input->post('status')
                 );
 

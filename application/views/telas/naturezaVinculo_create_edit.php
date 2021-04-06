@@ -37,6 +37,16 @@
                             }
                             ?></textarea>
                         </div>
+                        <div class="form-group has-feedback">
+                            <label>Carga Horária Máxima</label>
+                            <input name="carga_horaria_maxima" type="int" class="form-control" placeholder="Carga Horária Máxima" value="<?php
+                            if (isset($naturezaVinculo)) {
+                                if ($naturezaVinculo != NULL) {
+                                    echo $naturezaVinculo->carga_horaria_maxima;
+                                }
+                            }
+                            ?>">
+                        </div>
                         <div class="form-group">
                             <label>Status</label>
                             <select name="status" class="form-control">

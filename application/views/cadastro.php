@@ -31,16 +31,38 @@
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
-                <p class="login-box-msg">Acesso ao Sistema de Estágios Supervisionados - UNIMONTES</p>
+                <p class="login-box-msg">Cadastro de Aluno</p>
 
-                <form action="<?php echo base_url('sistema/logar'); ?>" method="post">
+                <form action="<?php echo base_url('sistema/cadastro'); ?>" method="post">
                     <div class="form-group has-feedback">
-                        <input name="matricula" type="text" maxlength="30" class="form-control" placeholder="Usuário/Matrícula">
+                        <label for="cpf">CPF<span class="text-danger">*</span>:</label>
+                        <input id="cpf" name="cpf" type="text" maxlength="14" class="form-control" placeholder="CPF" require>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input name="senha" type="password" class="form-control" placeholder="Senha">
+                        <label for="nome">Nome Completo<span class="text-danger">*</span>:</label>
+                        <input id="nome" name="nome" type="text" maxlength="255" class="form-control" placeholder="Nome Completo" require>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="matricula">Matrícula<span class="text-danger">*</span>:</label>
+                        <input id="matricula" name="matricula" type="text" maxlength="30" class="form-control" placeholder="Matrícula" require>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="senha">Senha<span class="text-danger">*</span>:</label>
+                        <input id="senha" name="senha" type="password" class="form-control" placeholder="Senha de acesso" require>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="email">E-mail<span class="text-danger">*</span>:</label>
+                        <input id="email" name="email" type="text" maxlength="255" class="form-control" placeholder="E-mail" require>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="contato">Contato:</label>
+                        <input id="contato" name="contato" type="text" maxlength="14" class="form-control" placeholder="Contato">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
                     <?php
                     if ($this->session->flashdata('msg') != NULL) {
@@ -50,23 +72,14 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-xs-4 col-xs-offset-8">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Acessar</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Confirmar</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
                 <!-- /.social-auth-links -->
-
                 <hr/>
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="#" class="btn btn-link pull-left">Esqueci minha senha.</a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="#" class="btn btn-link pull-right">Novo cadastro.</a>
-                    </div>
-                </div>
-
+                Obrigatório<span class="text-danger">*</span>
             </div>
             <!-- /.login-box-body -->
         </div>
@@ -74,17 +87,21 @@
 
         <!-- jQuery 2.2.3 -->
         <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <!-- jQuery mask -->
+        <script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
         <!-- iCheck -->
         <script src="<?php echo base_url(); ?>assets/plugins/iCheck/icheck.min.js"></script>
         <script>
-            $(function() {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' // optional
-                });
+            $('#cpf').mask('999.999.999-99');
+            $('#contato').mask('(00) 0000-00009');
+            $('#contato').blur(function(event) {
+                if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+                    $('#contato').mask('(00) 00000-0009');
+                } else {
+                    $('#contato').mask('(00) 0000-00009');
+                }
             });
         </script>
     </body>

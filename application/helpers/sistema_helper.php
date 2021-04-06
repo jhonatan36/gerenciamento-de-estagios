@@ -186,3 +186,59 @@ function getData($fomato = "d/m/Y H:i:s") {
     return date($fomato);
     
 }
+
+function VerificaCHEstagio($chd = 0, $final_semestre){
+    if ( $chd != 0 ) {
+
+        //ch é a carga horária que deverá atender. 360 horas é o padrão
+        $dataAtual = getData('d/m/Y');
+
+        //considerar feriados, quais ?
+        $feriados = array('01/01', '02/04', '21/04', '01/05', '07/09', '12/10', '02/11', '15/11', '25/12');
+
+        $inicio = mktime(0, 0, 0, explode('/', $dataAtual)[1] , explode('/', $dataAtual)[0] , explode('/', $dataAtual)[2]);
+        $fim    = mktime(0, 0, 0, explode('/', $final_semestre)[1], explode('/', $final_semestre)[0], explode('/', $final_semestre)[2]);
+
+        $contagem = ContaDias($inicio, $fim, $feriados);
+
+        $ch = $contagem['uteis'] * $chd;
+
+        return $ch;
+    }
+}
+
+function ContaDias($begin, $end, $feriados){
+    if ($begin > $end) {
+        return 0;
+    }
+    else {
+
+        $uteis = 0;
+        $domingos = 0;
+        $no_days = 0;
+        $holidayCount = 0;
+
+        while ($begin <= $end) {
+            
+            $no_days++; // no of days in the given interval
+            if (in_array(date("d/m", $begin), $feriados)) {
+                $holidayCount++;
+            }else{
+                $what_day = date("N", $begin);
+                if($what_day == 7){
+                    $domingos++;
+                }else{
+                    $uteis++;
+                }
+            }
+            $begin += 86400; // +1 day
+        };
+
+        return [
+            'uteis' => $uteis,
+            'domingos' => $domingos,
+            'feriados' => $holidayCount,
+            'intervalo_dias' => $no_days
+        ];
+    }
+}

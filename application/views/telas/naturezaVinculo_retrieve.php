@@ -34,6 +34,7 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Descrição</th>
+                                <th>Carga Horária Máxima</th>
                                 <th>Status</th>
                                 <th>Opções</th>
                             </tr>
@@ -43,6 +44,7 @@
                             <tr>
                                 <td><?php echo $linha->nome;?></td>
                                 <td><?php echo $linha->descricao;?></td>
+                                <td><?php echo $linha->carga_horaria_maxima . ' hora(s)';?></td>
                                 <td><?php if($linha->status==1){echo 'Ativo';}else if($linha->status==0){echo 'Desativado';}?></td>
                                 <td>
                                 
