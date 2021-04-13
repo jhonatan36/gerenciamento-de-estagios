@@ -11,6 +11,7 @@ class Estagio extends CI_Controller {
         $this->load->model('estagio_model', 'estagio');
         $this->load->model('semestre_model', 'semestre');
         $this->load->model('naturezaVinculo_model', 'naturezaVinculo');
+        $this->load->model('empresa_model', 'empresa');
 
         define('CH_TOTAL', 360);
     }
@@ -43,8 +44,11 @@ class Estagio extends CI_Controller {
 
         if ($permissao) {
 
+            $data_atual = date('Y-m-d');
+
             $semestre = $this->semestre->retornar(['status' => 1], null, false)->row();
             $natureza_vinculos = $this->naturezaVinculo->retornar_naturezaVinculo(['status' => 1], null, true);
+            $empresas = $this->empresa->retorna_empresa(['status' => 1, 'inicio_vinculo <=' => $data_atual, 'final_vinculo >=' => $data_atual], null, true);
 
             $this->load->helper('sistema_helper');
 
@@ -53,7 +57,8 @@ class Estagio extends CI_Controller {
                 'tela' => 'estagio_create',
                 'funcao' => 'cadastrar',
                 'semestre' => $semestre,
-                'natureza_vinculos' => $natureza_vinculos
+                'natureza_vinculos' => $natureza_vinculos,
+                'empresas' => $empresas
             ];
 
             $this->load->view('system_view', $dados);

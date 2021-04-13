@@ -19,7 +19,7 @@
 
                     <div class="box-body">
                         <div class="form-group has-feedback">
-                            <label>Nome</label>
+                            <label>Nome<span class="text-danger">*</span></label>
                             <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php
                             if (isset($tipoArquivo)) {
                                 if ($tipoArquivo != NULL) {
@@ -39,11 +39,11 @@
                             ?></textarea>
                         </div>
                         <div class="form-group has-feedback">
-                            <label>Arquivo (.pdf)</label>
+                            <label>Modelo (.pdf/.html)<span class="text-danger">*</span></label>
                             <input name="arquivo" type="file" class="form-control" />
                         </div>
                         <div class="form-group">
-                            <label>Status</label>
+                            <label>Status<span class="text-danger">*</span></label>
                             <select name="status" class="form-control">
                                 <option value="1" <?php if(isset($tipoArquivo) && $tipoArquivo->status == 1){echo 'selected';} ?>>Ativo</option>
                                 <option value="0" <?php if(isset($tipoArquivo) && $tipoArquivo->status == 0){echo 'selected';} ?>>Inativo</option>
@@ -56,6 +56,9 @@
                             }
                             ?>"/>
                         <?php } ?>
+
+                        <hr/>
+                        <p>Obrigatório<span class="text-danger">*</span></p>
                     </div>
 
                     <div class="box-footer">

@@ -39,10 +39,10 @@ class TipoArquivo extends CI_Controller {
             if(isset($_FILES['arquivo']['error']) && ($_FILES['arquivo']['error'] === 0)){
 
                 $nomeArquivo = preg_replace('/[ -]+/', '_', $_FILES['arquivo']['name']);
-                $upload_dir = './assets/uploads/required_files/';
+                $upload_dir = './assets/arquivos/modelos/';
 
                 $config = [
-                    'allowed_types' => 'pdf',
+                    'allowed_types' => 'pdf|html',
                     'upload_path' => $upload_dir,
                     'file_name' => $nomeArquivo
                 ];
@@ -52,27 +52,27 @@ class TipoArquivo extends CI_Controller {
                 $cadastro = array(
                     'nome' => $this->input->post('nome'),
                     'descricao' => $this->input->post('descricao'),
-                    'diretorio' => '/assets/uploads/required_files/'.$nomeArquivo,
+                    'diretorio' => $upload_dir.$nomeArquivo,
                     'status' => $this->input->post('status')
                 );
 
                 //cria o diretorio caso não exista
-                if(!is_dir($upload_dir)){
+                /*if(!is_dir($upload_dir)){
                     mkdir($upload_dir, 0777, true);
-                }
+                }*/
 
                 if($this->upload->do_upload('arquivo')){
                     if ($this->tipoArquivo->cadastrar($cadastro)) {
-                        set_msg('msg', 'Arquivo cadastrado com sucesso!', 'sucesso');
+                        set_msg('msg', 'Tipo Arquivo cadastrado com sucesso!', 'sucesso');
                         redirect('tipoArquivo');
                     } else {
                         //remover o arquivo
-
+                        unlink($upload_dir.$nomeArquivo);
                         set_msg('msg', 'Erro ao realizar o cadastro!', 'erro');
                         redirect('tipoArquivo/cadastrar');
                     }
                 } else {
-                    print_r($this->upload->data());
+                    print_r($this->upload->display_errors());
                 }
 
             }

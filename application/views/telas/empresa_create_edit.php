@@ -32,6 +32,18 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
+                                    <label>Nome Fantasia</label>
+                                    <input name="nome_fantasia" type="text" class="form-control" placeholder="Nome Fantasia" value="<?php
+                                    if (isset($empresa)) {
+                                        if ($empresa != NULL) {
+                                            echo $empresa->nome_fantasia;
+                                        }
+                                    }
+                                    ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback">
                                     <label>CNPJ</label>
                                     <input name="cnpj" type="text" class="form-control cnpj" placeholder="99.999.999/9999-99" value="<?php
                                     if (isset($empresa)) {
@@ -42,6 +54,9 @@
                                     ?>">
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>E-mail</label>
@@ -49,21 +64,6 @@
                                     if (isset($empresa)) {
                                         if ($empresa != NULL) {
                                             echo $empresa->email;
-                                        }
-                                    }
-                                    ?>">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group has-feedback">
-                                    <label>Telefone de Contato</label>
-                                    <input name="contato" type="text" class="form-control telefoneContato" placeholder="(99) 99999-9999" value="<?php
-                                    if (isset($empresa)) {
-                                        if ($empresa != NULL) {
-                                            echo $empresa->contato;
                                         }
                                     }
                                     ?>">
@@ -96,6 +96,18 @@
                         </div>
 
                         <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback">
+                                    <label>Telefone de Contato</label>
+                                    <input name="contato" type="text" class="form-control telefoneContato" placeholder="(99) 99999-9999" value="<?php
+                                    if (isset($empresa)) {
+                                        if ($empresa != NULL) {
+                                            echo $empresa->contato;
+                                        }
+                                    }
+                                    ?>">
+                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="form-group has-feedback">
                                     <label>CEP</label>

@@ -39,13 +39,16 @@ class Empresa extends CI_Controller {
                 $final_vinculo = implode('-', array_reverse(explode('/', $this->input->post('final_vinculo'))));
 
                 $cadastro = array(
-                    'razao_social' => $this->input->post('razao_social'),
+                    'nome_fantasia' => $this->input->post('nome_fantasia'),
                     'cnpj' => $this->input->post('cnpj'),
                     'inicio_vinculo' => $inicio_vinculo,
                     'final_vinculo' => $final_vinculo,
                     'contato' => $this->input->post('contato')
                 );
 
+                if ($this->input->post('razao_social') != NULL) {
+                    $cadastro['razao_social'] = $this->input->post('razao_social');
+                }
                 if ($this->input->post('cidade') != NULL) {
                     $cadastro['cidade'] = $this->input->post('cidade');
                 }
